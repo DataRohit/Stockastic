@@ -16,7 +16,7 @@ from statsmodels.tsa.ar_model import AutoReg
 # Create function to fetch stock name and id
 def fetch_stocks():
     # Load the data
-    df = pd.read_csv(Path.cwd().parent / "data" / "equity_issuers.csv")
+    df = pd.read_csv(Path.cwd().parent.parent / "data" / "equity_issuers.csv")
 
     # Filter the data
     df = df[["Security Code", "Issuer Name"]]
