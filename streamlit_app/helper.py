@@ -56,72 +56,82 @@ def fetch_stock_info(stock_ticker):
     # Extract full of the stock
     stock_data_info = stock_data.info
 
+    # Function to safely get value from dictionary or return "N/A"
+    def safe_get(data_dict, key):
+        return data_dict.get(key, "N/A")
+
     # Extract only the important information
     stock_data_info = {
         "Basic Information": {
-            "symbol": stock_data_info["symbol"],
-            "longName": stock_data_info["longName"],
-            "currency": stock_data_info["currency"],
-            "exchange": stock_data_info["exchange"],
+            "symbol": safe_get(stock_data_info["symbol"]),
+            "longName": safe_get(stock_data_info["longName"]),
+            "currency": safe_get(stock_data_info["currency"]),
+            "exchange": safe_get(stock_data_info["exchange"]),
         },
         "Market Data": {
-            "currentPrice": stock_data_info["currentPrice"],
-            "previousClose": stock_data_info["previousClose"],
-            "open": stock_data_info["open"],
-            "dayLow": stock_data_info["dayLow"],
-            "dayHigh": stock_data_info["dayHigh"],
-            "regularMarketPreviousClose": stock_data_info["regularMarketPreviousClose"],
-            "regularMarketOpen": stock_data_info["regularMarketOpen"],
-            "regularMarketDayLow": stock_data_info["regularMarketDayLow"],
-            "regularMarketDayHigh": stock_data_info["regularMarketDayHigh"],
-            "fiftyTwoWeekLow": stock_data_info["fiftyTwoWeekLow"],
-            "fiftyTwoWeekHigh": stock_data_info["fiftyTwoWeekHigh"],
-            "fiftyDayAverage": stock_data_info["fiftyDayAverage"],
-            "twoHundredDayAverage": stock_data_info["twoHundredDayAverage"],
+            "currentPrice": safe_get(stock_data_info["currentPrice"]),
+            "previousClose": safe_get(stock_data_info["previousClose"]),
+            "open": safe_get(stock_data_info["open"]),
+            "dayLow": safe_get(stock_data_info["dayLow"]),
+            "dayHigh": safe_get(stock_data_info["dayHigh"]),
+            "regularMarketPreviousClose": safe_get(
+                stock_data_info["regularMarketPreviousClose"]
+            ),
+            "regularMarketOpen": safe_get(stock_data_info["regularMarketOpen"]),
+            "regularMarketDayLow": safe_get(stock_data_info["regularMarketDayLow"]),
+            "regularMarketDayHigh": safe_get(stock_data_info["regularMarketDayHigh"]),
+            "fiftyTwoWeekLow": safe_get(stock_data_info["fiftyTwoWeekLow"]),
+            "fiftyTwoWeekHigh": safe_get(stock_data_info["fiftyTwoWeekHigh"]),
+            "fiftyDayAverage": safe_get(stock_data_info["fiftyDayAverage"]),
+            "twoHundredDayAverage": safe_get(stock_data_info["twoHundredDayAverage"]),
         },
         "Volume and Shares": {
-            "volume": stock_data_info["volume"],
-            "regularMarketVolume": stock_data_info["regularMarketVolume"],
-            "averageVolume": stock_data_info["averageVolume"],
-            "averageVolume10days": stock_data_info["averageVolume10days"],
-            "averageDailyVolume10Day": stock_data_info["averageDailyVolume10Day"],
-            "sharesOutstanding": stock_data_info["sharesOutstanding"],
-            "impliedSharesOutstanding": stock_data_info["impliedSharesOutstanding"],
-            "floatShares": stock_data_info["floatShares"],
+            "volume": safe_get(stock_data_info["volume"]),
+            "regularMarketVolume": safe_get(stock_data_info["regularMarketVolume"]),
+            "averageVolume": safe_get(stock_data_info["averageVolume"]),
+            "averageVolume10days": safe_get(stock_data_info["averageVolume10days"]),
+            "averageDailyVolume10Day": safe_get(
+                stock_data_info["averageDailyVolume10Day"]
+            ),
+            "sharesOutstanding": safe_get(stock_data_info["sharesOutstanding"]),
+            "impliedSharesOutstanding": safe_get(
+                stock_data_info["impliedSharesOutstanding"]
+            ),
+            "floatShares": safe_get(stock_data_info["floatShares"]),
         },
         "Dividends and Yield": {
-            "dividendRate": stock_data_info["dividendRate"],
-            "dividendYield": stock_data_info["dividendYield"],
-            "payoutRatio": stock_data_info["payoutRatio"],
+            "dividendRate": safe_get(stock_data_info["dividendRate"]),
+            "dividendYield": safe_get(stock_data_info["dividendYield"]),
+            "payoutRatio": safe_get(stock_data_info["payoutRatio"]),
         },
         "Valuation and Ratios": {
-            "marketCap": stock_data_info["marketCap"],
-            "enterpriseValue": stock_data_info["enterpriseValue"],
-            "priceToBook": stock_data_info["priceToBook"],
-            "debtToEquity": stock_data_info["debtToEquity"],
-            "grossMargins": stock_data_info["grossMargins"],
-            "profitMargins": stock_data_info["profitMargins"],
+            "marketCap": safe_get(stock_data_info["marketCap"]),
+            "enterpriseValue": safe_get(stock_data_info["enterpriseValue"]),
+            "priceToBook": safe_get(stock_data_info["priceToBook"]),
+            "debtToEquity": safe_get(stock_data_info["debtToEquity"]),
+            "grossMargins": safe_get(stock_data_info["grossMargins"]),
+            "profitMargins": safe_get(stock_data_info["profitMargins"]),
         },
         "Financial Performance": {
-            "totalRevenue": stock_data_info["totalRevenue"],
-            "revenuePerShare": stock_data_info["revenuePerShare"],
-            "totalCash": stock_data_info["totalCash"],
-            "totalCashPerShare": stock_data_info["totalCashPerShare"],
-            "totalDebt": stock_data_info["totalDebt"],
-            "earningsGrowth": stock_data_info["earningsGrowth"],
-            "revenueGrowth": stock_data_info["revenueGrowth"],
-            "returnOnAssets": stock_data_info["returnOnAssets"],
-            "returnOnEquity": stock_data_info["returnOnEquity"],
+            "totalRevenue": safe_get(stock_data_info["totalRevenue"]),
+            "revenuePerShare": safe_get(stock_data_info["revenuePerShare"]),
+            "totalCash": safe_get(stock_data_info["totalCash"]),
+            "totalCashPerShare": safe_get(stock_data_info["totalCashPerShare"]),
+            "totalDebt": safe_get(stock_data_info["totalDebt"]),
+            "earningsGrowth": safe_get(stock_data_info["earningsGrowth"]),
+            "revenueGrowth": safe_get(stock_data_info["revenueGrowth"]),
+            "returnOnAssets": safe_get(stock_data_info["returnOnAssets"]),
+            "returnOnEquity": safe_get(stock_data_info["returnOnEquity"]),
         },
         "Cash Flow": {
-            "freeCashflow": stock_data_info["freeCashflow"],
-            "operatingCashflow": stock_data_info["operatingCashflow"],
+            "freeCashflow": safe_get(stock_data_info["freeCashflow"]),
+            "operatingCashflow": safe_get(stock_data_info["operatingCashflow"]),
         },
         "Analyst Targets": {
-            "targetHighPrice": stock_data_info["targetHighPrice"],
-            "targetLowPrice": stock_data_info["targetLowPrice"],
-            "targetMeanPrice": stock_data_info["targetMeanPrice"],
-            "targetMedianPrice": stock_data_info["targetMedianPrice"],
+            "targetHighPrice": safe_get(stock_data_info["targetHighPrice"]),
+            "targetLowPrice": safe_get(stock_data_info["targetLowPrice"]),
+            "targetMeanPrice": safe_get(stock_data_info["targetMeanPrice"]),
+            "targetMedianPrice": safe_get(stock_data_info["targetMedianPrice"]),
         },
     }
 
