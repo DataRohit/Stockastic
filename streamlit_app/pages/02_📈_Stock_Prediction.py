@@ -99,11 +99,7 @@ st.plotly_chart(fig, use_container_width=True)
 train_df, test_df, forecast, predictions = generate_stock_prediction(stock_ticker)
 
 # Check if the data is not None
-if (
-    train_df is not None
-    and (train_df["forecast"] >= 0).all()
-    and (train_df["predictions"] >= 0).all()
-):
+if train_df is not None and (forecast >= 0).all() and (predictions >= 0).all():
     # Add a title to the stock prediction graph
     st.markdown("## **Stock Prediction**")
 
