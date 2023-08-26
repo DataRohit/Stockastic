@@ -96,49 +96,62 @@ st.plotly_chart(fig, theme=None, use_container_width=True)
 #####Stock Prediction Graph#####
 
 # Fetch the stock prediction data
-train_df, test_df, forecast, predictions = generate_stock_prediction(stock_ticker)
+data = generate_stock_prediction(stock_ticker)
 
-# Add a title to the stock prediction graph
-st.markdown("## **Stock Prediction**")
+# Check if the data is not None
+if data != None:
+    # Unpack the data
+    train_df, test_df, forecast, predictions = generate_stock_prediction(stock_ticker)
 
-# Create a plot for the stock prediction
-fig = go.Figure(
-    data=[
-        go.Scatter(
-            x=train_df.index,
-            y=train_df["Close"],
-            name="Train",
-            mode="lines",
-            line=dict(color="blue"),
-        ),
-        go.Scatter(
-            x=test_df.index,
-            y=test_df["Close"],
-            name="Test",
-            mode="lines",
-            line=dict(color="orange"),
-        ),
-        go.Scatter(
-            x=forecast.index,
-            y=forecast,
-            name="Forecast",
-            mode="lines",
-            line=dict(color="red"),
-        ),
-        go.Scatter(
-            x=test_df.index,
-            y=predictions,
-            name="Test Predictions",
-            mode="lines",
-            line=dict(color="green"),
-        ),
-    ]
-)
+    # Add a title to the stock prediction graph
+    st.markdown("## **Stock Prediction**")
 
-# Customize the stock prediction graph
-fig.update_layout(xaxis_rangeslider_visible=False)
+    # Create a plot for the stock prediction
+    fig = go.Figure(
+        data=[
+            go.Scatter(
+                x=train_df.index,
+                y=train_df["Close"],
+                name="Train",
+                mode="lines",
+                line=dict(color="blue"),
+            ),
+            go.Scatter(
+                x=test_df.index,
+                y=test_df["Close"],
+                name="Test",
+                mode="lines",
+                line=dict(color="orange"),
+            ),
+            go.Scatter(
+                x=forecast.index,
+                y=forecast,
+                name="Forecast",
+                mode="lines",
+                line=dict(color="red"),
+            ),
+            go.Scatter(
+                x=test_df.index,
+                y=predictions,
+                name="Test Predictions",
+                mode="lines",
+                line=dict(color="green"),
+            ),
+        ]
+    )
 
-# Use the native Plotly theme.
-st.plotly_chart(fig, theme=None, use_container_width=True)
+    # Customize the stock prediction graph
+    fig.update_layout(xaxis_rangeslider_visible=False)
+
+    # Use the native Plotly theme.
+    st.plotly_chart(fig, theme=None, use_container_width=True)
+
+# If the data is None
+else:
+    # Add a title to the stock prediction graph
+    st.markdown("## **Stock Prediction**")
+
+    # Add a message to the stock prediction graph
+    st.markdown("### **No data available for the selected stock**")
 
 #####Stock Prediction Graph End#####
