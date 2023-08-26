@@ -87,8 +87,8 @@ fig = go.Figure(
 # Customize the historical data graph
 fig.update_layout(xaxis_rangeslider_visible=False)
 
-# Use the native Plotly theme.
-st.plotly_chart(fig, theme=None, use_container_width=True)
+# Use the native streamlit theme.
+st.plotly_chart(fig, use_container_width=True)
 
 #####Historical Data Graph End#####
 
@@ -143,8 +143,8 @@ if data != None:
     # Customize the stock prediction graph
     fig.update_layout(xaxis_rangeslider_visible=False)
 
-    # Use the native Plotly theme.
-    st.plotly_chart(fig, theme=None, use_container_width=True)
+    # Use the native streamlit theme.
+    st.plotly_chart(fig, use_container_width=True)
 
 # If the data is None
 else:
