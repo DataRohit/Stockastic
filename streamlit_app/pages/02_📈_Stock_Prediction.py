@@ -95,14 +95,11 @@ st.plotly_chart(fig, use_container_width=True)
 
 #####Stock Prediction Graph#####
 
-# Fetch the stock prediction data
-data = generate_stock_prediction(stock_ticker)
+# Unpack the data
+train_df, test_df, forecast, predictions = generate_stock_prediction(stock_ticker)
 
 # Check if the data is not None
-if data != None:
-    # Unpack the data
-    train_df, test_df, forecast, predictions = generate_stock_prediction(stock_ticker)
-
+if train_df != None and min(forecast) >= 0 and min(predictions) >= 0:
     # Add a title to the stock prediction graph
     st.markdown("## **Stock Prediction**")
 
