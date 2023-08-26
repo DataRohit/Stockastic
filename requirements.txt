@@ -6,3 +6,4 @@ plotly==5.16.1
 seaborn==0.12.2
 statsmodels==0.14.0
 streamlit==1.26.0
+yfinance==0.2.28
