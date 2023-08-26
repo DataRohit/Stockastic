@@ -100,9 +100,9 @@ train_df, test_df, forecast, predictions = generate_stock_prediction(stock_ticke
 
 # Check if the data is not None
 if (
-    train_df != None
-    and any(num < 0 for num in forecast)
-    and any(num < 0 for num in predictions)
+    train_df
+    and any(num >= 0 for num in forecast)
+    and any(num >= 0 for num in predictions)
 ):
     # Add a title to the stock prediction graph
     st.markdown("## **Stock Prediction**")
