@@ -1,6 +1,6 @@
-# Import path
-# Import datetime
+# Imports
 import datetime as dt
+import os
 from pathlib import Path
 
 # Import pandas
@@ -15,6 +15,9 @@ from statsmodels.tsa.ar_model import AutoReg
 
 # Create function to fetch stock name and id
 def fetch_stocks():
+    print(os.listdir(Path.cwd().parent))
+    print(os.listdir(Path.cwd().parent.parent))
+
     # Load the data
     df = pd.read_csv(Path.cwd().parent.parent / "data" / "equity_issuers.csv")
 
