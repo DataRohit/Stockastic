@@ -63,7 +63,7 @@ col1, col2 = st.columns(2)
 
 # Row 1
 col1.dataframe(
-    pd.DataFrame({"Currency": [stock_data_info["Basic Information"]["currency"]]}),
+    pd.DataFrame({"Issuer Name": [stock_data_info["Basic Information"]["longName"]]}),
     hide_index=True,
     width=500,
 )
@@ -72,6 +72,14 @@ col2.dataframe(
     hide_index=True,
     width=500,
 )
+
+# Row 2
+col1.dataframe(
+    pd.DataFrame({"Currency": [stock_data_info["Basic Information"]["currency"]]}),
+    hide_index=True,
+    width=500,
+)
+col2.dataframe(pd.DataFrame({"Exchange": [stock_exchange]}), hide_index=True, width=500)
 
 #####Basic Information End#####
 
@@ -246,6 +254,37 @@ col3.dataframe(
                 stock_data_info["Volume and Shares"]["averageDailyVolume10Day"]
             ]
         }
+    ),
+    hide_index=True,
+    width=300,
+)
+
+# Row 2
+col1.dataframe(
+    pd.DataFrame(
+        {
+            "Shares Outstanding": [
+                stock_data_info["Volume and Shares"]["sharesOutstanding"]
+            ]
+        }
+    ),
+    hide_index=True,
+    width=300,
+)
+col2.dataframe(
+    pd.DataFrame(
+        {
+            "Implied Shares Outstanding": [
+                stock_data_info["Volume and Shares"]["impliedSharesOutstanding"]
+            ]
+        }
+    ),
+    hide_index=True,
+    width=300,
+)
+col3.dataframe(
+    pd.DataFrame(
+        {"Float Shares": [stock_data_info["Volume and Shares"]["floatShares"]]}
     ),
     hide_index=True,
     width=300,

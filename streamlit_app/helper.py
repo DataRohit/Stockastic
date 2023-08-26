@@ -60,7 +60,9 @@ def fetch_stock_info(stock_ticker):
     stock_data_info = {
         "Basic Information": {
             "symbol": stock_data_info["symbol"],
+            "longName": stock_data_info["longName"],
             "currency": stock_data_info["currency"],
+            "exchange": stock_data_info["exchange"],
         },
         "Market Data": {
             "currentPrice": stock_data_info["currentPrice"],
@@ -83,6 +85,9 @@ def fetch_stock_info(stock_ticker):
             "averageVolume": stock_data_info["averageVolume"],
             "averageVolume10days": stock_data_info["averageVolume10days"],
             "averageDailyVolume10Day": stock_data_info["averageDailyVolume10Day"],
+            "sharesOutstanding": stock_data_info["sharesOutstanding"],
+            "impliedSharesOutstanding": stock_data_info["impliedSharesOutstanding"],
+            "floatShares": stock_data_info["floatShares"],
         },
         "Dividends and Yield": {
             "dividendRate": stock_data_info["dividendRate"],
