@@ -52,10 +52,15 @@ git clone https://github.com/user/stockastic.git
 pip install -r requirements.txt
 ```
 
-3. Run the app
+3. Change directory
+```bash
+cd streamlit_app
+```
+
+4. Run the app
 
 ```bash
-streamlit run app.py
+streamlit run 00_😎_Main.py
 ```
 
 The app will be live at ```http://localhost:8501```
