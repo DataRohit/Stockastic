@@ -39,7 +39,11 @@ st.sidebar.text_input(
 
 
 # Fetch the info of the stock
-stock_data_info = fetch_stock_info(stock_ticker)
+try:
+    stock_data_info = fetch_stock_info(stock_ticker)
+except:
+    st.error("Error: Unable to fetch the stock data. Please try again later.")
+    st.stop()
 
 
 #####Title#####
