@@ -170,7 +170,7 @@ def generate_stock_prediction(stock_ticker):
         stock_data_close = stock_data_close.asfreq("D", method="ffill")
 
         # Fill missing values
-        stock_data_close = stock_data_close.fillna(method="ffill")
+        stock_data_close = stock_data_close.ffill()
 
         # Define training and testing area
         train_df = stock_data_close.iloc[: int(len(stock_data_close) * 0.9) + 1]  # 90%
